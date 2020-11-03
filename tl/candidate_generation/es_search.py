@@ -148,7 +148,11 @@ class Search(object):
                     for hit in hits_copy:
                         all_labels = hit['_source'].get('labels', [])
                         all_labels.extend(hit['_source'].get('aliases', []))
-                        candidate_dict[hit['_id']] = {'score': hit['_score'], 'label_str': '|'.join(all_labels)}
+                        if 'pagerank' in hit['_source']:
+                            pagerank = hit['_source']['pagerank']
+                        else:
+                            pagerank = ''
+                        candidate_dict[hit['_id']] = {'score': hit['_score'], 'label_str': '|'.join(all_labels), 'pagerank': pagerank}
             self.query_cache[parameter] = candidate_dict
 
         return self.query_cache[parameter]

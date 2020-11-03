@@ -50,7 +50,8 @@ class Utility(object):
                 cf_dict['kg_id'] = ""
                 cf_dict['kg_labels'] = ""
                 cf_dict['method'] = method
-                cf_dict[self.score_column_name] = 0.0
+                cf_dict[self.score_column_name] = ""
+                cf_dict['pagerank'] = ""
                 candidates_format.append(cf_dict)
             else:
                 for kg_id in candidate_dict:
@@ -63,6 +64,7 @@ class Utility(object):
                     cf_dict['kg_labels'] = candidate_dict[kg_id]['label_str']
                     cf_dict['method'] = method
                     cf_dict[self.score_column_name] = candidate_dict[kg_id]['score']
+                    cf_dict['pagerank'] = candidate_dict[kg_id]['pagerank']
                     candidates_format.append(cf_dict)
         return candidates_format
 
@@ -85,7 +87,8 @@ class Utility(object):
             cf_dict['kg_id'] = ""
             cf_dict['kg_labels'] = ""
             cf_dict['method'] = method
-            cf_dict[self.score_column_name] = 0.0
+            cf_dict[self.score_column_name] = ""
+            cf_dict['pagerank'] = ""
             candidates_format.append(cf_dict)
         else:
             for kg_id in candidate_dict:
@@ -97,5 +100,6 @@ class Utility(object):
                 cf_dict['kg_labels'] = candidate_dict[kg_id]['label_str']
                 cf_dict['method'] = method
                 cf_dict[self.score_column_name] = candidate_dict[kg_id]['score']
+                cf_dict['pagerank'] = candidate_dict[kg_id]['pagerank']
                 candidates_format.append(cf_dict)
         return candidates_format
